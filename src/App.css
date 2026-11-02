@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Lista com marcadores */
+.tiptap ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+/* Lista numerada */
+.tiptap ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+/* Espaçamento entre itens */
+.tiptap li {
+  padding-left: 0.25rem;
+}
