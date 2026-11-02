@@ -162,7 +162,7 @@ const Bombons = ({ usuarioLogado }) => {
                             <picture className="flex basis-44 h-32 shrink-0">
                                 <img 
                                   src={bombom.imagem} 
-                                  className="border-2 border-[#ff9b4e] w-full h-full object-cover rounded-xl" 
+                                  className="border-2 border-[#ff9b4e] w-full h-full object-cover" 
                                   alt={bombom.nome} 
                                 />
                             </picture>
