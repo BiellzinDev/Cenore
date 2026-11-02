@@ -64,3 +64,13 @@ Este projeto foi construído utilizando tecnologias modernas do ecossistema fron
        │                    (Persistência)     (CDN / Deleção)
        │
        └── [ Firebase Auth ] (Gestão de Sessão do Admin)
+
+       ---
+
+## 📞 Contato & Redes Sociais
+
+Gostou do projeto ou quer bater um papo sobre desenvolvimento? Entre em contacto comigo:
+
+* **LinkedIn**: [Gabriel Campos](https://www.linkedin.com/in/gabriel-campos-097792190/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B0LEGIxGFTJq6OYc1lr9k3Q%3D%3D)
+* **GitHub**: [BiellzinDev](https://github.com/BiellzinDev)
+* **E-mail**: gabrielc.a@hotmail.com.br
