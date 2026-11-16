@@ -172,7 +172,7 @@ const Bombons = ({ usuarioLogado }) => {
                                 </h3>
                                 
                                 <div 
-                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm h-20 md:text-center`}
+                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm h-20 md:text-center md:min-h-25`}
                                   dangerouslySetInnerHTML={{ __html: bombom.descricao }}
                                 />
                             </article>

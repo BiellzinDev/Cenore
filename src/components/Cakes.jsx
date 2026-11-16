@@ -169,13 +169,13 @@ const Cakes = ({ usuarioLogado }) => {
                                   alt={bolo.nome} 
                                 />
                             </picture>
-                            <article className={`justify-self-end flex-1 ${isReverso ? 'text-right' : 'text-left'} flex flex-col gap-2`}>
+                            <article className={`justify-self-end flex-1 h-full${isReverso ? 'text-right' : 'text-left'} flex flex-col gap-2`}>
                                 <h3 className={`bg-[#c26918] w-full text-white font-bold md:text-center ${isReverso ? 'rounded-l-2xl pr-2' : 'rounded-r-2xl pl-2'} py-2 md:rounded-2xl`}>
                                   {bolo.nome}
                                 </h3>
                                 
                                 <div 
-                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm h-20 md:text-center`}
+                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm md:text-center md:min-h-25`}
                                   dangerouslySetInnerHTML={{ __html: bolo.descricao }}
                                 />
                             </article>
