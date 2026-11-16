@@ -1,0 +1,21 @@
+[{
+    "logo": "/Logo-Cenore.webp",
+    "preco": 50.00,
+    "descricao": "Camiseta de algodão com estampa personalizada."
+}, {
+    "produto": "Calça Jeans",
+    "preco": 100.00,
+    "descricao": "Calça jeans autêntica com corte moderno."
+}, {
+    "produto": "Tênis Esportivo",
+    "preco": 150.00,
+    "descricao": "Tênis confortável para atividades físicas."
+}, {
+    "produto": "Relógio de Pulso",
+    "preco": 200.00,
+    "descricao": "Relógio elegante com design moderno."
+}, {
+    "produto": "Mochila",
+    "preco": 80.00,
+    "descricao": "Mochila resistente para uso diário."
+}]

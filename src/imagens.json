@@ -1,0 +1,50 @@
+{
+  "login": {
+    "fundo": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468933/fundo-login.webp",
+    "cadeado": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468930/cadeado-login.webp",
+    "logo": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468931/cenore-login.webp",
+    "cake": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468930/cake-login.webp",
+    "brigadeiroMadeira": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468932/Brigadeiros-de-chocolate-sobre-madeira.webp"
+  },
+  "header": {
+    "logoPrincipal": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468934/Logo-Cenore.webp"
+  },
+  "contato": {
+    "whatsApp": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468937/whats.webp",
+    "whatsAppMenor": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468938/whatsapp-1.webp",
+    "instagram": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468934/insta.webp",
+    "confeiteiro": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468937/confeiteiro.webp",
+    "confeiteiro2": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468935/confeiteiro-2.webp",
+    "quemSomos": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468943/quem-somos.webp"
+  },
+  "home": {
+    "hero": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468936/hero-cenore.webp",
+    "bombons": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469604/pao-de-mel.webp",
+    "gourmets": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469607/brigadeiro.webp",
+    "bolos": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468934/bolos.webp"
+  },
+  "gourmets": {
+    "brigadeiros": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469607/brigadeiro.webp",
+    "torta": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469603/torta.webp",
+    "cupCake": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469605/cup-cake.webp",
+    "pudim": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469604/pudim.webp",
+    "eclair": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469605/eclair.webp",
+    "brownie": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469607/brownie.webp"
+  },
+  "bolos": {
+    "nozes": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469605/nozes.webp",
+    "prestigio": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469604/prestigio.webp",
+    "frutasVermelhas": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469604/frutas-vermelhas.webp",
+    "frutasAmarelas": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469605/frutas-amarelas.webp",
+    "cenouraBrigadeiro": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469606/cenoura.webp",
+    "doceAmeixa": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793469605/doce-ameixa.webp"
+  },
+  "bombons": {
+    "paoCenoura": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468935/pao-cenoura.webp",
+    "paoMel": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793471949/other-pao-de-mel.webp",
+    "paoPistache": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468936/pao-pistache.webp",
+    "paoLimao": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468936/pao-limao.webp",
+    "paoPrestigio": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468937/pao-prestigio.webp",
+    "paoMorango": "https://res.cloudinary.com/eas3rbfj/image/upload/v1793468936/pao-morango.webp"
+  }
+}
