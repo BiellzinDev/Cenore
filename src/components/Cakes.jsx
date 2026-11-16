@@ -1,52 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import imagens from '../imagens.json';
 
 const Cakes = ({ usuarioLogado }) => {
   const [bolosPlanilha, setBolosPlanilha] = useState([]);
-  const [bolosFixosEstado, setBolosFixosEstado] = useState([
-    {
-      id: 'nozes',
-      nome: 'Nozes',
-      descricao: 'Massa branca artesanal com creme belga, nozes e ganache de chocolate. Cremoso, sofisticado e irresistível.',
-      imagem: imagens.bolos.nozes
-    },
-    {
-      id: 'prestigio',
-      nome: 'Prestígio',
-      descricao: 'Massa chiffon de chocolate com recheio cremoso de prestígio, cobertura de brigadeiro, coco e beijinhos. Intenso, cremoso e irresistível.',
-      imagem: imagens.bolos.prestigio
-    },
-    {
-      id: 'frutasVermelhas',
-      nome: 'Frutas Vermelhas',
-      descricao: 'Massa branca com creme belga, geleia artesanal de frutas vermelhas e cobertura de chantilly. Leve e delicado.',
-      imagem: imagens.bolos.frutasVermelhas
-    },
-    {
-      id: 'frutasAmarelas',
-      nome: 'Frutas Amarelas',
-      descricao: 'Massa branca com creme belga e geleia artesanal de manga, abacaxi e maracujá. Tropical, leve e refrescante.',
-      imagem: imagens.bolos.frutasAmarelas
-    },
-    {
-      id: 'cenouraBrigadeiro',
-      nome: 'Cenoura com Brigadeiro',
-      descricao: 'Massa artesanal de cenoura recheada e coberta com brigadeiro Gourmet.',
-      imagem: imagens.bolos.cenouraBrigadeiro
-    },
-    {
-      id: 'doceAmeixa',
-      nome: 'Doce de leite com Ameixa',
-      descricao: 'Massa chiffon branca, com recheio de doce de leite artesanal e ameixas secas. Coberto com doce de leite artesanal.',
-      imagem: imagens.bolos.doceAmeixa
-    }
-  ]);
-   const [carregando, setCarregando] = useState(true);
+  const [carregando, setCarregando] = useState(true);
 
-   // Estado para armazenar o item que o usuário clicou para remover
-   const [itemParaDeletar, setItemParaDeletar] = useState(null);
+  // Estado para armazenar o item que o usuário clicou para remover
+  const [itemParaDeletar, setItemParaDeletar] = useState(null);
 
-   // URL do seu Web App do Google Apps Script
+  // URL do seu Web App do Google Apps Script
   const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxodGzHhpYjN3rs-uW8nCaijFBsWtrtV9wFGg-tJ-g-4ej3gBEkfZEIMfEx6kDa2vr-gw/exec';
 
   const buscarBolos = () => {
@@ -67,7 +28,7 @@ const Cakes = ({ usuarioLogado }) => {
     buscarBolos();
   }, []);
 
-  // Abre o modal de confirmação salvando o bombom selecionado
+  // Abre o modal de confirmação salvando o bolo selecionado
   const abrirModalDeletar = (bolo) => {
     setItemParaDeletar(bolo);
   };
@@ -77,13 +38,6 @@ const Cakes = ({ usuarioLogado }) => {
     if (!itemParaDeletar) return;
 
     const bolo = itemParaDeletar;
-
-    // Se for um item fixo do JSON
-    if (typeof bolo.id === 'string' && !Number(bolo.id)) {
-      setBolosFixosEstado((prev) => prev.filter((b) => b.id !== bolo.id));
-      setItemParaDeletar(null);
-      return;
-    }
 
     try {
       await fetch(GOOGLE_SHEETS_URL, {
@@ -106,8 +60,6 @@ const Cakes = ({ usuarioLogado }) => {
       setItemParaDeletar(null);
     }
   };
-
-  const listaBolos = [...bolosFixosEstado, ...bolosPlanilha];
 
   return (
     <section className="py-8 pb-20">
@@ -141,13 +93,13 @@ const Cakes = ({ usuarioLogado }) => {
             <section className="py-4 w-full flex justify-center items-center">
                 <section className="w-[90%] flex flex-col justify-center items-center gap-6 md:flex-row md:flex-wrap">
                     
-                    {listaBolos.map((bolo, index) => {
+                    {bolosPlanilha.map((bolo, index) => {
                       const isReverso = index % 2 !== 0;
 
                       return (
                         <article 
                           key={bolo.id || index} 
-                          className={`relative flex md:basis-60 ${isReverso ? 'flex-row-reverse items-start md:items-center md:justify-center ' : ''} flex-1 w-full items-start md:flex-col-reverse md-items-center md:justify-center max-w-3xl`}
+                          className={`relative flex ${isReverso ? 'flex-row-reverse items-start md:items-center md:justify-center ' : ''} md:basis-60 flex-1 w-full items-start md:flex-col-reverse md-items-center md:justify-center max-w-3xl md:items-center`}
                         >
                             {usuarioLogado && (
                               <span className='absolute flex items-center justify-center top-[-8%] md:top-[-2%] md:left-[-1%] text-[#d8000a] text-2xl bg-white rounded-full z-10'>
@@ -169,15 +121,14 @@ const Cakes = ({ usuarioLogado }) => {
                                   alt={bolo.nome} 
                                 />
                             </picture>
-                            <article className={`justify-self-end flex-1 h-full${isReverso ? 'text-right' : 'text-left'} flex flex-col gap-2`}>
+                            <article className={`justify-self-end flex-1 md:w-full h-full ${isReverso ? ' text-right ' : 'text-left '} flex flex-col gap-2`}>
                                 <h3 className={`bg-[#c26918] w-full text-white font-bold md:text-center ${isReverso ? 'rounded-l-2xl pr-2' : 'rounded-r-2xl pl-2'} py-2 md:rounded-2xl`}>
                                   {bolo.nome}
                                 </h3>
                                 
-                                <div 
-                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm md:text-center md:min-h-25`}
-                                  dangerouslySetInnerHTML={{ __html: bolo.descricao }}
-                                />
+                                <p className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm md:text-center md:min-h-25`}>
+                                    {bolo.descricao ? bolo.descricao.replace(/<[^>]*>?/gm, '') : ''}
+                                </p>
                             </article>
                         </article>
                       );

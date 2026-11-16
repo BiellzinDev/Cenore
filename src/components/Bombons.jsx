@@ -1,46 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import imagens from '../imagens.json';
 
 const Bombons = ({ usuarioLogado }) => {
   const [bombonsPlanilha, setBombonsPlanilha] = useState([]);
-  const [bombonsFixosEstado, setBombonsFixosEstado] = useState([
-    {
-      id: 'paoCenoura',
-      nome: 'Pão de Cenoura',
-      descricao: 'Massa de cenoura, recheada com brigadeiro gourmet e coberto com chocolate.',
-      imagem: imagens.bombons.paoCenoura
-    },
-    {
-      id: 'paoMel',
-      nome: 'Pão de Mel',
-      descricao: 'Massa artesanal de pão de mel, recheada com doce de leite e coberto com chocolate meio amargo.',
-      imagem: imagens.bombons.paoMel
-    },
-    {
-      id: 'paoPistache',
-      nome: 'Pistache',
-      descricao: 'Bombom artesanal de cenoura com chocolate meio amargo, bolo de cenoura e brigadeiro gourmet de pistache.',
-      imagem: imagens.bombons.paoPistache
-    },
-    {
-      id: 'paoLimao',
-      nome: 'Limão',
-      descricao: 'Bombom artesanal de cenoura com chocolate branco, bolo artesanal e brigadeiro gourmet de limão siciliano ou chocolate branco.',
-      imagem: imagens.bombons.paoLimao
-    },
-    {
-      id: 'paoPrestigio',
-      nome: 'Prestígio',
-      descricao: 'Bombom artesanal de chocolate meio amargo com recheio cremoso de prestígio e massa chiffon de chocolate.',
-      imagem: imagens.bombons.paoPrestigio
-    },
-    {
-      id: 'paoMorango',
-      nome: 'Morango',
-      descricao: 'Casquinha de chocolate meio amargo, com recheio de massa chifon de chocolate, brigadeiro gourmet e geleia artesanal de morango.',
-      imagem: imagens.bombons.paoMorango
-    }
-  ]);
   const [carregando, setCarregando] = useState(true);
 
   // Estado para armazenar o item que o usuário clicou para remover
@@ -74,13 +35,6 @@ const Bombons = ({ usuarioLogado }) => {
 
     const bombom = itemParaDeletar;
 
-    // Se for um item fixo do JSON
-    if (typeof bombom.id === 'string' && !Number(bombom.id)) {
-      setBombonsFixosEstado((prev) => prev.filter((b) => b.id !== bombom.id));
-      setItemParaDeletar(null);
-      return;
-    }
-
     try {
       await fetch(GOOGLE_SHEETS_URL, {
         method: 'POST',
@@ -102,8 +56,6 @@ const Bombons = ({ usuarioLogado }) => {
       setItemParaDeletar(null);
     }
   };
-
-  const listaBombons = [...bombonsFixosEstado, ...bombonsPlanilha];
 
   return (
     <section className="py-8 pb-20 relative">
@@ -137,7 +89,7 @@ const Bombons = ({ usuarioLogado }) => {
             <section className="py-4 w-full flex justify-center items-center">
                 <section className="w-[90%] flex flex-col justify-center items-center gap-6 md:flex-row md:flex-wrap">
                     
-                    {listaBombons.map((bombom, index) => {
+                    {bombonsPlanilha.map((bombom, index) => {
                       const isReverso = index % 2 !== 0;
 
                       return (
@@ -166,15 +118,14 @@ const Bombons = ({ usuarioLogado }) => {
                                   alt={bombom.nome} 
                                 />
                             </picture>
-                            <article className={`justify-self-end flex-1${isReverso ? 'text-right' : 'text-left w-full'} flex flex-col gap-2`}>
+                            <article className={`justify-self-end md:w-full flex-1 ${isReverso ? 'text-right' : 'text-left w-full'} flex flex-col gap-2`}>
                                 <h3 className={`bg-[#c26918] w-full text-white font-bold md:text-center ${isReverso ? 'rounded-l-2xl pr-2' : 'rounded-r-2xl pl-2'} py-2 md:rounded-2xl`}>
                                   {bombom.nome}
                                 </h3>
                                 
-                                <div 
-                                  className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm h-20 md:text-center md:min-h-25`}
-                                  dangerouslySetInnerHTML={{ __html: bombom.descricao }}
-                                />
+                                <p className={`${isReverso ? 'pr-2' : 'pl-2'} text-[#78401F] text-sm md:text-center md:min-h-25`}>
+                                    {bombom.descricao ? bombom.descricao.replace(/<[^>]*>?/gm, '') : ''}
+                                </p>
                             </article>
                         </article>
                       );

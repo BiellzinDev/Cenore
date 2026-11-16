@@ -52,7 +52,7 @@ const MenuLateral = ({ menuAberto, setMenuAberto, setPaginaAtiva, usuarioLogado 
       ) : (
         <button 
           onClick={() => navegarPara('login')} 
-          className="bg-[#c26918] text-white font-bold text-[1.2rem] rounded-3xl py-2 w-[75%] hover:opacity-65 cursor-pointer flex justify-center gap-2 items-center"
+          className="bg-[#c26918] text-white font-bold text-[1rem] rounded-3xl py-2 w-[75%] hover:opacity-65 cursor-pointer flex justify-center gap-2 items-center"
         >
           <i className="fi fi-sr-sign-in-alt flex text-[1rem]"></i>Login
         </button>

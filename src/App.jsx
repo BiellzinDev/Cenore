@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import { auth } from './firebase.js'
 import { onAuthStateChanged } from 'firebase/auth'
-import imagens from './imagens.json' // <--- Importação necessária das imagens
 
 import Header from './components/Header.jsx'
 import MenuLateral from './components/MenuLateral.jsx'
@@ -28,14 +27,21 @@ function App() {
   const [paginaAtiva, setPaginaAtiva] = useState('home');
   const [menuAberto, setMenuAberto] = useState(false);
   const [usuarioLogado, setUsuarioLogado] = useState(null);
-  
-  // Estado para controlar se o Firebase ainda está verificando se há usuário salvo
   const [carregandoAuth, setCarregandoAuth] = useState(true);
 
-  // Estado para armazenar a foto do Hero da Home dinâmica
-  const [fotoHeroHome, setFotoHeroHome] = useState(imagens.home.hero);
+  // Inicializa os estados buscando do localStorage (para não sumir ao dar F5)
+  const [fotoHeroHome, setFotoHeroHome] = useState(() => {
+    return localStorage.getItem('fotoHeroHome') || '';
+  });
+  
+  const [mensagemHeroHome, setMensagemHeroHome] = useState(() => {
+    return localStorage.getItem('mensagemHeroHome') || '';
+  });
 
-  // O useEffect roda assim que o app carrega para verificar se já existe um usuário logado
+  // URL do seu Web App do Google Apps Script
+  const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxodGzHhpYjN3rs-uW8nCaijFBsWtrtV9wFGg-tJ-g-4ej3gBEkfZEIMfEx6kDa2vr-gw/exec';
+
+  // Verifica se há usuário logado pelo Firebase
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -49,6 +55,28 @@ function App() {
     return () => unsubscribe();
   }, []);
 
+  // Busca a configuração mais atualizada da Home (foto e mensagem) do Google Sheets ao carregar
+  useEffect(() => {
+    fetch(GOOGLE_SHEETS_URL)
+      .then((res) => res.json())
+      .then((data) => {
+        const homeConfig = data.find((item) => item.tipo === 'foto_home');
+        if (homeConfig) {
+          if (homeConfig.imagem) {
+            setFotoHeroHome(homeConfig.imagem);
+            localStorage.setItem('fotoHeroHome', homeConfig.imagem);
+          }
+          if (homeConfig.mensagem !== undefined) {
+            setMensagemHeroHome(homeConfig.mensagem);
+            localStorage.setItem('mensagemHeroHome', homeConfig.mensagem);
+          }
+        }
+      })
+      .catch((err) => {
+        console.error('Erro ao buscar configuração da home do Sheets:', err);
+      });
+  }, []);
+
   const renderizarTela = () => {
     switch (paginaAtiva) {
       case 'home': 
@@ -56,7 +84,8 @@ function App() {
           <Home 
             onGoToOrcamento={() => setPaginaAtiva('orcamento')} 
             setPaginaAtiva={setPaginaAtiva} 
-            fotoHero={fotoHeroHome} 
+            fotoHero={fotoHeroHome}
+            mensagemHero={mensagemHeroHome} 
           />
         );
       case 'gourmets': return <Gourmets usuarioLogado={usuarioLogado} />;
@@ -72,7 +101,14 @@ function App() {
         return (
           <TelaAlterarFotoHome 
             setPaginaAtiva={setPaginaAtiva} 
-            onFotoAtualizada={(novaUrl) => setFotoHeroHome(novaUrl)} 
+            onFotoAtualizada={(novaUrl, novaMensagem) => {
+              if (novaUrl) {
+                setFotoHeroHome(novaUrl);
+                localStorage.setItem('fotoHeroHome', novaUrl);
+              }
+              setMensagemHeroHome(novaMensagem);
+              localStorage.setItem('mensagemHeroHome', novaMensagem);
+            }} 
           />
         );
       case 'login': 
@@ -87,7 +123,8 @@ function App() {
           <Home 
             onGoToOrcamento={() => setPaginaAtiva('orcamento')} 
             setPaginaAtiva={setPaginaAtiva} 
-            fotoHero={fotoHeroHome} 
+            fotoHero={fotoHeroHome}
+            mensagemHero={mensagemHeroHome} 
           />
         );
     }
