@@ -31,11 +31,11 @@ function App() {
 
   // Inicializa os estados buscando do localStorage (para não sumir ao dar F5)
   const [fotoHeroHome, setFotoHeroHome] = useState(() => {
-    return localStorage.getItem('fotoHeroHome') || '';
+    return localStorage.getItem('fotoHeroHome') || 'https://res.cloudinary.com/eas3rbfj/image/upload/v1794946584/ymnj0eyaza3yg3reycw5.webp';
   });
   
   const [mensagemHeroHome, setMensagemHeroHome] = useState(() => {
-    return localStorage.getItem('mensagemHeroHome') || '';
+    return localStorage.getItem('mensagemHeroHome') || 'Texturas que derretem e sabores que marcam!';
   });
 
   // URL do seu Web App do Google Apps Script
