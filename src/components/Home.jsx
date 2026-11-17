@@ -8,8 +8,8 @@ const Home = ({ onGoToOrcamento, setPaginaAtiva, fotoHero, mensagemHero }) => {
             <section className="flex w-full justify-center items-center py-4">
                 {/* Exibe a imagem principal apenas se ela existir (vinda do Google Sheets/localStorage) */}
                 {fotoHero && (
-                  <picture className="flex justify-center items-center text-white w-[90%] max-h-80 relative">
-                      <img src={fotoHero} className="rounded-[1.7rem] w-full object-cover max-h-80" alt="Imagem principal da Confeitaria" />
+                  <picture className="flex justify-center items-center text-white w-[90%] max-h-80 relative lg:max-h-160">
+                      <img src={fotoHero} className="rounded-[1.7rem] w-full object-cover max-h-80 lg:max-h-160" alt="Imagem principal da Confeitaria" />
                       
                       {/* Renderiza o figcaption APENAS se houver uma mensagem cadastrada */}
                       {mensagemHero && (
